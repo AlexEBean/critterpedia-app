@@ -1,4 +1,7 @@
 const bcrypt = require("bcrypt")
+const nodemailer = require('nodemailer');
+const smtpTransport = require('nodemailer-smtp-transport');
+const crypto = require('crypto');
 
 module.exports = {
 
@@ -59,4 +62,66 @@ module.exports = {
             res.sendStatus(200)
         }
     },
+
+    deleteUser: async (req, res) => {
+        const db = req.app.get('db')
+        const {user_id} = req.session.user
+
+        try {
+            await db.auth.delete_user([+user_id])
+            res.sendStatus(200)
+        } catch(err) {
+            console.log("Error in deleting account", err)
+            res.sendStatus(500)
+        }
+    },
+
+    forgotPassword: async (req, res) => {
+        const db = req.app.get('db')
+        const {email} = req.body;
+        const newEmail = await db.auth.check_email(email)
+
+        if(!newEmail[0]){
+            res.status(404).send("Email not recognized")
+        } else {
+            const token = crypto.randomBytes(20).toString('hex')
+            await db.auth.add_forgot_password([token, email])
+            const passTransporter = nodemailer.createTransport(smtpTransport({
+                service: "gmail",
+                auth: {
+                    user: "writersblockdawgs@gmail.com",
+                    pass: "Writersblock$"
+                }
+            }));
+
+            const mailOptions = {
+                from: "writersblockdawgs@gmail.com",
+                to: `${email}`,
+                subject: 'Reset Password',
+                html: ' <p>You are receiving this because you have requested to reset the password for your account. If you did not request this, please ignore this email and your password will remain unchanged.</p>'+
+
+                    '<p>Click <a href="localhost:3000/#/reset/' + token + '">here</a> to reset your password</p>' +
+                    `<p>If link does not work copy and paste this into your browser:    localhost:3000/#/reset/${token}</p>`
+
+            }
+
+            const info = await passTransporter.sendMail(mailOptions);
+
+            console.log("Message sent: ", info.messageId);
+            res.status(200).send("Email sent");
+        }
+        
+    },
+
+    resetPassword: async (req,res) => {
+        const db = req.app.get('db')
+        const {passwordToken} = req.params
+        const {password} = req.body
+
+        const salt = bcrypt.genSaltSync(10)
+        const hash = bcrypt.hashSync(password, salt)
+
+        const user = await db.auth.reset_password([passwordToken, hash])
+        return res.status(200).send(user)
+    }
 }
