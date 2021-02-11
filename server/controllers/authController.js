@@ -11,7 +11,7 @@ module.exports = {
         const existingUsername = await db.auth.check_username(username)
         const existingEmail = await db.auth.check_email(email)
         if (existingUsername[0]) {
-            return res.status(409).send("User already exists with that email")
+            return res.status(409).send("User already exists with that username")
           }
         if (existingEmail[0]) {
           return res.status(409).send("User already exists with that email")
@@ -28,8 +28,8 @@ module.exports = {
 
     login: async (req, res) => {
         const db = req.app.get('db')
-        const {email, password} = req.body
-        const [foundUser] = await db.auth.check_email(email)
+        const {username, password} = req.body
+        const [foundUser] = await db.auth.check_username(username)
         if(!foundUser){
             return res.status(401).send("Incorrect login information")
         }
