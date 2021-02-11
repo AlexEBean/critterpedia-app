@@ -29,7 +29,7 @@
   }
 
 
-.loginBtn {
+.auth-btn {
     color: #F4F4F9;
     background-color: #586F7C; 
     border: none;
@@ -91,7 +91,7 @@
     
   }
 
-  .forgotpasswordlink{
+  .forgotPasswordLink{
     text-decoration: none;
     color: #586F7C;
     margin-bottom: 50px;

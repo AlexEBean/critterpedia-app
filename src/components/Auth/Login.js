@@ -42,8 +42,8 @@ const Login = () => {
                     onChange = {e => setPassword(e.target.value)}
                 />
 
-                <Link to='/forgotpassword' className='forgotpasswordlink'>Forgot Password?</Link>
-                <button className = "loginBtn" onClick = {login} > Login </button>
+                <Link to='/forgotpassword' className='forgotPasswordLink'>Forgot Password?</Link>
+                <button className = "auth-btn" onClick = {login} > Login </button>
             </form>
             <div className = "space">
             <img className='authLogo' alt='logo' src='https://cdn.discordapp.com/attachments/789196106965319750/794260091326824499/writersblocklogo.png'></img>

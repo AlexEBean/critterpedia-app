@@ -37,7 +37,8 @@ app.post("/auth/login", authCtrl.login)
 app.post("/auth/logout", authCtrl.logout)
 app.get('/auth/refresh', authCtrl.refresh)
 app.delete("/auth/delete", authCtrl.deleteUser)
-app.put("/resetpassword/:passwordtoken", authCtrl.resetPassword)
+app.post("/forgotpassword", authCtrl.forgotPassword)
+app.put("/resetpassword/:passwordToken", authCtrl.resetPassword)
 
 
 app.get('*', (req, res) => {

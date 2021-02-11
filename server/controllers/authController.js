@@ -78,14 +78,14 @@ module.exports = {
 
     forgotPassword: async (req, res) => {
         const db = req.app.get('db')
-        const {email} = req.body;
+        const {email} = req.body
         const newEmail = await db.auth.check_email(email)
 
         if(!newEmail[0]){
             res.status(404).send("Email not recognized")
         } else {
             const token = crypto.randomBytes(20).toString('hex')
-            await db.auth.add_forgot_password([token, email])
+            await db.auth.forgot_password([token, email])
             const passTransporter = nodemailer.createTransport(smtpTransport({
                 service: "gmail",
                 auth: {
@@ -100,8 +100,8 @@ module.exports = {
                 subject: 'Reset Password',
                 html: ' <p>You are receiving this because you have requested to reset the password for your account. If you did not request this, please ignore this email and your password will remain unchanged.</p>'+
 
-                    '<p>Click <a href="localhost:3000/#/reset/' + token + '">here</a> to reset your password</p>' +
-                    `<p>If link does not work copy and paste this into your browser:    localhost:3000/#/reset/${token}</p>`
+                    '<p>Click <a href="http://localhost:3000/#/reset/' + token + '">here</a> to reset your password</p>' +
+                    `<p>If link does not work copy and paste this into your browser:    http://localhost:3000/#/reset/${token}</p>`
 
             }
 

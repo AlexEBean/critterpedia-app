@@ -32,25 +32,25 @@ const Register = () => {
 
     return (
         <div className = "register">
-            <form className='form'>
-                <input className='input'
-                        name='username'
-                        value={username}
-                        placeholder='Username'
-                        onChange={e => setUsername(e.target.value)}
+            <form className = 'form'>
+                <input className = 'input'
+                        name = 'username'
+                        value = {username}
+                        placeholder = 'Username'
+                        onChange = {e => setUsername(e.target.value)}
                         />
-                <input className='input'
-                        name= 'Email'
-                        value= {email}
-                        placeholder='Email'
-                        onChange={e => setEmail(e.target.value)}
+                <input className = 'input'
+                        name = 'Email'
+                        value = {email}
+                        placeholder = 'Email'
+                        onChange = {e => setEmail(e.target.value)}
                         />
                     <input className='input'
-                        name='password'
-                        type ='password'
-                        value={password}
-                        placeholder='Enter Password'
-                        onChange={e => setPassword(e.target.value)}
+                        name = 'password'
+                        type = 'password'
+                        value = {password}
+                        placeholder = 'Enter Password'
+                        onChange = {e => setPassword(e.target.value)}
                         />
                     <button className='registerBtn' onClick = {register} > Register </button>
             </form>

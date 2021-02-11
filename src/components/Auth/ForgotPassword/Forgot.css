@@ -1,0 +1,32 @@
+.forgot-password{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient( #586F7C, #B8DBD9);
+    background-color: #586F7C;
+    display: flex;
+    flex-wrap: row;
+}
+
+.backToLogin{
+        color: #586F7C;
+        margin-bottom: 40px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 30px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.password-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.password-btn{
+    margin-top: 25px;
+}
+
+.password-p{
+    color: #586F7C;
+}

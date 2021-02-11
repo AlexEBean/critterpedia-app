@@ -6,3 +6,6 @@ CREATE TABLE users (
     profile_pic VARCHAR(2000) NOT NULL,
     register_date DATE DEFAULT CURRENT_DATE
 );
+
+ALTER TABLE users
+ADD reset_password_token VARCHAR(2000) DEFAULT null;
