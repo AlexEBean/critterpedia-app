@@ -9,3 +9,15 @@ CREATE TABLE users (
 
 ALTER TABLE users
 ADD reset_password_token VARCHAR(2000) DEFAULT null;
+
+CREATE TABLE posts(
+    post_id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(user_id),
+    content VARCHAR(5000) NOT NULL
+);
+
+CREATE TABLE comments(
+    comment_id SERIAL PRIMARY KEY,
+    post_id INT REFERENCES posts(post_id),
+    comment VARCHAR(1000) NOT NULL
+);
