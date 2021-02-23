@@ -10,7 +10,6 @@ const UserPosts = () => {
 
     useEffect(() =>{
         getUserPosts() 
-        console.log(myPosts)
     }, [])
 
     const getUserPosts = async () => {
