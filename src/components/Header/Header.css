@@ -1,0 +1,145 @@
+.header{
+    height: 12vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: linear-gradient(#2f4550, #586f7c);
+    position: fixed;
+
+}
+
+.profile-pic{
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 5px;
+    
+}
+.update-button{
+    color: whitesmoke;
+    /* background-color: #BFACB5;  */
+    border: none;
+   background-color: transparent;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    font: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+  
+}
+.link {
+    color: whitesmoke;
+    
+   
+    padding: 30px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+.logo {
+    width: 142px;
+    height: 37px;
+    
+}
+
+.h3 {
+    font-size: 14px;
+}
+
+.dropdown-menu{
+   
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* margin-right: 55%; */
+    background-image: repeating-linear-gradient(#586f7c, transparent);
+    position: relative;
+   
+}
+/* @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    } */
+
+   
+
+.hrHeader {
+    height: 1px;
+    background-color: whitesmoke;
+    border: none;
+    width: 70%;
+
+}
+.drop {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100px;
+    flex-wrap: wrap;
+}
+.dropdown-btn {
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+
+#delete:hover{
+    color: #D73A49;
+}
+
+.confirmBackground{
+    position: absolute;
+    top: 12vh;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 100vw;
+    min-height: 88vh;
+    background-color: #444554;
+    opacity: 50%;
+}
+
+.confirmDelete{
+    position: absolute;
+    top: 37vh;
+    left: 28vw;
+    width: 40vw;
+    padding: 20px;
+    background-color: #B8DBD9;
+}
+
+.hideConfirm{
+    display: none;
+}
+
+.confirmDeleteButtons button{
+    height: 30px;
+    width: 75px;
+    background-color: #444554;
+    border: none;
+    margin-right: 20px;
+    margin-left: 20px;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer
+}
+
+.confirmDeleteButtons button:hover{
+    background-color: #586F7CD0;
+    transition: .5s;
+}
