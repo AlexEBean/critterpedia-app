@@ -10,7 +10,7 @@ module.exports = {
         const db = req.app.get('db')
         const {user_id} = req.session.user
       
-        const userPosts = await db.posts.get_user_posts(+user_id)
+        const userPosts = await db.post.get_user_posts(+user_id)
         return res.status(200).send(userPosts)
       },
     addPost: async (req, res) => {
@@ -32,7 +32,7 @@ module.exports = {
         const {post_id} = req.params
         const {content} = req.body
 
-        const newPost = await db.posts.edit_user_post([post_id, content])
+        const newPost = await db.post.edit_user_post([post_id, content])
         return res.status(200).send(newPost)
       },
 
@@ -40,9 +40,9 @@ module.exports = {
         const db = req.app.get('db')
         const {post_id} = req.params
 
-        await db.posts.delete_comments([post_id])
+        await db.post.delete_comments([post_id])
 
-        await db.posts.delete_post([post_id])
+        await db.post.delete_post([post_id])
         return res.status(200).send("deleted")
       },
 }

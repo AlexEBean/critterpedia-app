@@ -4,7 +4,8 @@ const massive = require('massive')
 const session = require('express-session')
 const authCtrl = require("./controllers/authController")
 const postCtrl = require("./controllers/postController")
-const picCtrl = require("./controllers/picController");
+const picCtrl = require("./controllers/picController")
+const commentCtrl = require("./controllers/commentController")
 
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
@@ -48,6 +49,11 @@ app.get("/api/user_posts", postCtrl.getUserPosts)
 app.post("/api/post", postCtrl.addPost)
 app.put("/api/user_posts/:post_id", postCtrl.editUserPost)
 app.delete("/api/user_Post/delete/:post_id", postCtrl.deletePost)
+
+app.get("/api/comments/:postId", commentCtrl.getComments)
+app.post("/api/comments/:postId", commentCtrl.addComment)
+app.get("/dash/posts/:postId", commentCtrl.getOnePost)
+app.delete("/api/comments/:comment_id", commentCtrl.deleteComment)
 
 
 app.get("/api/pic/:user_id", picCtrl.getProfilePic)

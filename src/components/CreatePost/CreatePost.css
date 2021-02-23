@@ -1,0 +1,40 @@
+.create-post{
+    width: 100%;
+    min-height: 88vh;
+    max-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #F8F8F8;
+}
+
+.post-input{
+    min-height: 60vh;
+    width: 70vw;
+    margin-top: 5vh;
+    color: black;
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    border: 1px solid #586F7C;
+}
+
+.submit{
+    width: 8vw;
+    margin-top: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #586F7C86;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+.submit:hover{
+    background-color: #586F7CD0;
+    transition: .5s;
+}
