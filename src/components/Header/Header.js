@@ -5,7 +5,7 @@ import {logoutUser, getUser} from "../../redux/reducer"
 import axios from "axios"
 import { v4 as randomString } from 'uuid'
 import {useDropzone} from 'react-dropzone'
-import {GridLoader} from 'react-spinners'
+import {ClipLoader} from 'react-spinners'
 import {NavDropdown} from 'react-bootstrap'
 import "./Header.css"
 
@@ -148,21 +148,30 @@ const Header = (props) => {
                 {user_id
                 ?
                 <div className = "header">
-                    <Link to='/dash'><img className='logo' alt='logo' src='https://cdn.discordapp.com/attachments/789196106965319750/794260091326824499/writersblocklogo.png'></img>
+                    <Link 
+                        to='/dash'>
+                            <img 
+                                className='logo' 
+                                alt='logo' 
+                                src='https://cdn.discordapp.com/attachments/789196106965319750/794260091326824499/writersblocklogo.png'>
+                            </img>
                     </Link>
-                    <Link to = "/createpost"
+                    <Link 
+                        to = "/createpost"
                         className = "link"
                         id = "createpost"
                     >
                         Add Post
                     </Link>
-                    <Link to = "/userposts"
+                    <Link 
+                        to = "/userposts"
                         className = "link"
                         id = "userposts"
                     >
                         Your Posts
                     </Link>
-                    <Link to = "/dash"
+                    <Link 
+                        to = "/dash"
                         className = "link"
                         id = "dash"
                     >
@@ -171,7 +180,9 @@ const Header = (props) => {
                     <div className='drop'>
                     <NavDropdown title = {isUploading 
                         ? 
-                            <GridLoader/> 
+                            <ClipLoader
+                                color = "whitesmoke"
+                            /> 
                         : 
                             
                             <img className = "profile-pic" alt = "profile-pic" src = {`${pic}`}/>

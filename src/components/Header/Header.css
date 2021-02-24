@@ -80,6 +80,7 @@
     width: 70%;
 
 }
+
 .drop {
     display: flex;
     justify-content: center;
@@ -87,6 +88,7 @@
     height: 100px;
     flex-wrap: wrap;
 }
+
 .dropdown-btn {
     color: white;
     padding: 30px 20px;
