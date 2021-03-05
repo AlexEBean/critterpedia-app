@@ -7,6 +7,7 @@ const authCtrl = require("./controllers/authController")
 const postCtrl = require("./controllers/postController")
 const picCtrl = require("./controllers/picController")
 const commentCtrl = require("./controllers/commentController")
+const {checkUser} = require("./middleware")
 
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env
 
@@ -47,21 +48,21 @@ app.put("/resetpassword/:passwordToken", authCtrl.resetPassword)
 
 
 app.get("/api/posts", postCtrl.getAllPosts)
-app.get("/api/user_posts", postCtrl.getUserPosts) 
-app.post("/api/post", postCtrl.addPost)
-app.put("/api/post/:post_id", postCtrl.editUserPost)
-app.delete("/api/post/:post_id", postCtrl.deletePost)
+app.get("/api/user_posts", checkUser, postCtrl.getUserPosts) 
+app.post("/api/post", checkUser, postCtrl.addPost)
+app.put("/api/post/:post_id", checkUser, postCtrl.editUserPost)
+app.delete("/api/post/:post_id", checkUser, postCtrl.deletePost)
 
 app.get("/api/comments/:postId", commentCtrl.getComments)
-app.post("/api/comments/:postId", commentCtrl.addComment)
+app.post("/api/comments/:postId", checkUser, commentCtrl.addComment)
 app.get("/dash/posts/:postId", commentCtrl.getOnePost)
-app.delete("/api/comments/:comment_id", commentCtrl.deleteComment)
+app.delete("/api/comments/:comment_id", checkUser, commentCtrl.deleteComment)
 
 
 app.get("/api/pic/:user_id", picCtrl.getProfilePic)
-app.get("/api/signs3", picCtrl.config)
-app.post("/api/signs3", picCtrl.deleteProfilePic)
-app.put("/api/user", picCtrl.updateProfilePic)
+app.get("/api/signs3", checkUser, picCtrl.config)
+app.post("/api/signs3", checkUser, picCtrl.deleteProfilePic)
+app.put("/api/user", checkUser, picCtrl.updateProfilePic)
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../build/index.html'))
