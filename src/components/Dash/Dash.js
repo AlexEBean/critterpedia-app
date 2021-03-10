@@ -6,18 +6,33 @@ import {Link} from 'react-router-dom'
 
 const Dash = (props) => {
     const [posts, setPosts] = useState([])
+    const [search, setSearch] = useState("")
 
     useEffect(() =>{
-        getAllPosts() 
+        getAllPosts()
     }, [])
 
     const getAllPosts = async () => {
         try{
-            const res = await axios.get('/api/posts')
+            const res = await axios.get(`/api/posts`)
             setPosts(res.data)
         } catch(err){
             console.log(err)
         }
+    }
+
+    const getPostsBySearch = async () => {
+        try{
+            const res = await axios.get(`/api/posts?search=${search}`)
+            setPosts(res.data)
+        } catch (err){
+            console.log(err)
+        }
+    }
+
+    const reset = () => {
+        setSearch("")
+        getAllPosts()
     }
 
     const mappedPosts = posts.map((post, index) => {
@@ -42,6 +57,28 @@ const Dash = (props) => {
     })
     return(
         <div className='push'>
+            <div
+                className = "search-box"
+            >
+                <input 
+                    name = "search"
+                    value = {search}
+                    placeholder = "Search..."
+                    onChange = { e => setSearch(e.target.value)}
+                />
+                <button 
+                    onClick = {getPostsBySearch} 
+                    className = "search-btn"
+                    >
+                    Search
+                    </button>
+                <button 
+                    onClick = {reset} 
+                    className = "search-btn"
+                    >
+                    Reset Search
+                </button>
+            </div>
         <ul>{mappedPosts}</ul>
         </div>
     )

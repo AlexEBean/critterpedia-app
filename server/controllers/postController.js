@@ -2,7 +2,13 @@ module.exports = {
 
     getAllPosts: async (req, res) => {
         const db = req.app.get('db')
-        const posts = await db.post.get_all_posts()
+        const {search} = req.query
+
+
+        let posts = await db.post.get_all_posts()
+        if (search) {
+          posts = await db.post.search_posts(search)
+        }
         res.status(200).send(posts)
     },
 
