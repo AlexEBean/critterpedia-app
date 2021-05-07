@@ -15,10 +15,14 @@ const Register = () => {
     const register = async (e) => {
         e.preventDefault()
         try {
-            const res = await axios.post("/auth/register", {username, email, password})
-            dispatch(loginUser(res.data))
-            history.push("/dash")
-            console.log(res.data)
+            if (!email || !username || !password){
+                alert("Please fill out all fields")
+            } else {
+                const res = await axios.post("/auth/register", {username, email, password})
+                dispatch(loginUser(res.data))
+                history.push("/dash")
+                console.log(res.data)
+            }
         }
         catch(err) {
             console.log(err)
