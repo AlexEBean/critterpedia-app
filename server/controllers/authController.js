@@ -1,6 +1,5 @@
 const bcrypt = require("bcrypt")
-const nodemailer = require('nodemailer');
-const smtpTransport = require('nodemailer-smtp-transport');
+const nodeOutlook = require('nodejs-nodemailer-outlook')
 const crypto = require('crypto');
 
 module.exports = {
@@ -86,28 +85,27 @@ module.exports = {
         } else {
             const token = crypto.randomBytes(20).toString('hex')
             await db.auth.forgot_password([token, email])
-            const passTransporter = nodemailer.createTransport(smtpTransport({
-                service: "gmail",
+            nodeOutlook.sendEmail({
                 auth: {
-                    user: "writersblockdawgs@gmail.com",
-                    pass: "Writersblock$"
-                }
-            }));
-
-            const mailOptions = {
-                from: "writersblockdawgs@gmail.com",
-                to: `${email}`,
+                    user: "writers-block-heroes@outlook.com",
+                    pass: "WBPassword9!"
+                },
+                from: 'writers-block-heroes@outlook.com',
+                to: email,
                 subject: 'Reset Password',
                 html: ' <p>You are receiving this because you have requested to reset the password for your account. If you did not request this, please ignore this email and your password will remain unchanged.</p>'+
 
-                    '<p>Click <a href="http://localhost:3000/#/reset/' + token + '">here</a> to reset your password</p>' +
-                    `<p>If link does not work copy and paste this into your browser:    http://localhost:3000/#/reset/${token}</p>`
-
+                    '<p>Click <a href="https://writers-block.xyz/#/reset/' + token + '">here</a> to reset your password</p>' 
+                    // +
+                    // `<p>If link does not work copy and paste this into your browser:    http://localhost:3000/#/reset/${token}</p>`
+                    ,
+    
+                onError: (e) => console.log(e),
+                onSuccess: (i) => console.log(i)
             }
+            
+            )
 
-            const info = await passTransporter.sendMail(mailOptions);
-
-            console.log("Message sent: ", info.messageId);
             res.status(200).send("Email sent");
         }
         
