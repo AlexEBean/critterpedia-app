@@ -223,7 +223,7 @@ const Header = (props) => {
                     </NavDropdown>
                         <div className = {del ? "confirmBackground" : "hideConfirm"}></div>
                         <div className = {del ? "confirmDelete" : "hideConfirm"}>
-                            <h5>Are you sure you want to delete your account? This cannot be undone</h5>
+                            <h5>Are you sure you want to delete your account? This cannot be undone.</h5>
                             <div className="confirmDeleteButtons">
                                 <button onClick = {cancelDelete} >Cancel</button>
                                 <button onClick = {deleteUser} >Delete</button>
