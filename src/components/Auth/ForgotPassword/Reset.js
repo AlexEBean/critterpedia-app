@@ -11,8 +11,6 @@ const Reset = (props) => {
 
     const resetPassword = async () => {
         const updatedUser = await axios.put(`/resetpassword/${props.match.params.resetid}`, {password});
-        console.log(updatedUser)
-        console.log(props.match.params.resetid)
         setNewUser(updatedUser.data[0])
         setToggle(false)
     }
@@ -21,10 +19,12 @@ const Reset = (props) => {
         <div className = 'forgot-password'>
             <div className = 'form password-form'>
                 <p 
-                    className = 'password-p'>{toggle ? "Update Password" : <Link 
-                                                                                className = 'backToLogin' 
-                                                                                to = "/">Return to Login
-                                                                            </Link>}
+                    className = 'password-p'>{toggle ? 
+                        "Update Password" : 
+                            <Link 
+                                className = 'backToLogin' 
+                                to = "/">Return to Login
+                            </Link>}
                 </p>
                 <p className = {toggle ? 'hide-password' : 'password-p'}>{newUser ? "Password has been updated" : "This Link is not valid."}</p>
                 <input 

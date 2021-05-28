@@ -9,15 +9,19 @@ const ForgotPassword = () => {
     const [toggle, setToggle] = useState(false)
 
     const sendResetLink = async () => {
-        await axios.post('/forgotpassword', {email})
-        setToggle(true)
+        try {
+            await axios.post('/forgotpassword', {email})
+            setToggle(true)
+        } catch {
+            alert("Email not recognized.")
+        }
     }
 
     return (
         <div className = 'forgot-password'>
             <div
                 className = 'form password-form'>
-                <p className = 'password-p'>{toggle ? "Email has been sent" :"An email will be sent to reset your password"}</p>
+                <p className = 'password-p'>{toggle ? "Email has been sent." : "An email will be sent to reset your password"}</p>
                 <input 
                     className = 'input'
                     name = 'email'
