@@ -3,6 +3,7 @@ import axios from "axios"
 import {useDispatch} from "react-redux"
 import {useHistory} from "react-router-dom"
 import {loginUser} from "../../redux/reducer"
+import logo from "../../media/logo.png"
 import "./Register.css"
 
 const Register = () => {
@@ -71,8 +72,8 @@ const Register = () => {
                 <button className = 'registerBtn' onClick = {register} > Register </button>
             </form>
             <div className = 'space'>
-                <img className ='authLogo' alt='logo' src='https://cdn.discordapp.com/attachments/789196106965319750/794260091326824499/writersblocklogo.png'></img>
-                <button onClick = {backToLogin} className='toLogin'>Already have an account?</button>
+                <img className ='authLogo' alt = 'logo' src = {logo}></img>
+                <button onClick = {backToLogin} className = 'toLogin'>Already have an account?</button>
             </div>
         </div>
     )
