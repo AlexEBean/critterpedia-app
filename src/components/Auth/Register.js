@@ -68,9 +68,6 @@ const Register = () => {
                             
                     ))}
                 </div>
-                <h4 className = "passwords-do-not-match" style = {{visibility: passMatch ? "hidden" : "visible"}}>
-                    Passwords do not match.
-                </h4>
                 <button className = 'registerBtn' onClick = {register} > Register </button>
             </form>
             <div className = 'space'>

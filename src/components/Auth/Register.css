@@ -31,10 +31,6 @@
       box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     }
   
-.passwords-do-not-match{
-    color: red;
-  }
-  
   .registerBtn {
     color: #F4F4F9;
     background-color: #586F7C; 
