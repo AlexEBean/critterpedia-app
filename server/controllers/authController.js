@@ -88,7 +88,7 @@ module.exports = {
             nodeOutlook.sendEmail({
                 auth: {
                     user: "writers-block-heroes@outlook.com",
-                    pass: "WBPassword9!"
+                    pass: "WB9Password!"
                 },
                 from: 'writers-block-heroes@outlook.com',
                 to: email,
