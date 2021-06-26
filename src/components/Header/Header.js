@@ -7,6 +7,7 @@ import { v4 as randomString } from 'uuid'
 import {useDropzone} from 'react-dropzone'
 import {ClipLoader} from 'react-spinners'
 import {NavDropdown} from 'react-bootstrap'
+import logo from "../../media/logo.png"
 import "./Header.css"
 
 const Header = (props) => {
@@ -153,7 +154,7 @@ const Header = (props) => {
                             <img 
                                 className='logo' 
                                 alt='logo' 
-                                src='https://cdn.discordapp.com/attachments/789196106965319750/794260091326824499/writersblocklogo.png'>
+                                src= {logo}>
                             </img>
                     </Link>
                     <Link 
