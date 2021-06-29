@@ -74,8 +74,7 @@ module.exports = {
         const db = req.app.get("db")
         const {user_id, url} = req.body
         const update = await db.picture.update_profile_pic(+user_id, url)
-        update = update[0]
-        res.status(200).send(update)
+        res.status(200).send(update[0])
     }
 
 }
