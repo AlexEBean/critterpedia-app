@@ -17,7 +17,7 @@ module.exports = {
         }
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
-        let profile_pic = `https://avatars.dicebear.com/api/identicon/${username}.svg`
+        const profile_pic = `https://avatars.dicebear.com/api/identicon/${username}.svg`
         const [newUser] = await db.auth.register_user([username, email, profile_pic, hash])
 
         req.session.user = newUser
