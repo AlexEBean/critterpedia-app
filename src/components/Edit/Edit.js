@@ -30,8 +30,8 @@ const Edit = (props) => {
         setComments(res.data)
     }
 
-    const copyCodeToClipboard = () => {
-          let copyText = document.getElementById("comment")
+    const copyCodeToClipboard = (commentID) => {
+          var copyText = document.getElementById(commentID)
 
           copyText.select();
           
@@ -64,7 +64,7 @@ const Edit = (props) => {
                 <textarea name="" className="comment" id={`comment ${comment.comment_id}`} value={comment.comment} readOnly></textarea>
                 <button 
                     className="copyButton" 
-                    onClick={() => copyCodeToClipboard()}>
+                    onClick={() => copyCodeToClipboard(`comment ${comment.comment_id}`)}>
                     <img alt="copy" src={copyicon}/>
                 </button>
 
