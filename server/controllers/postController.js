@@ -5,7 +5,7 @@ module.exports = {
         const {search} = req.query
 
 
-        const posts = await db.post.get_all_posts()
+        let posts = await db.post.get_all_posts()
         if (search) {
           posts = await db.post.search_posts(search)
         }
