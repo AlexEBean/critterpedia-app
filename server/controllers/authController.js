@@ -20,6 +20,23 @@ module.exports = {
         const profile_pic = `https://avatars.dicebear.com/api/identicon/${username}.svg`
         const [newUser] = await db.auth.register_user([username, email, profile_pic, hash])
 
+        nodeOutlook.sendEmail({
+            auth: {
+                user: "writers-block-heroes@outlook.com",
+                pass: "WB9Password!"
+            },
+            from: "writers-block-heroes@outlook.com",
+            to: email,
+            subject: "Welcome to Writers Block",
+            html: `<p>Welcome to Writer's Block, ${username}!</p>` + 
+                "<p>You're ready to get and give advice, expand your writing skills, improve your novels, and interact with other authors. We're happy you joined. Enjoy.</p>"
+                ,
+
+            onError: (e) => console.log(e),
+            onSuccess: (i) => console.log(i)
+            
+        })
+
         req.session.user = newUser
 
         res.status(200).send(req.session.user)
@@ -92,19 +109,19 @@ module.exports = {
                 },
                 from: 'writers-block-heroes@outlook.com',
                 to: email,
-                subject: 'Reset Password',
-                html: ' <p>You are receiving this because you have requested to reset the password for your account. If you did not request this, please ignore this email and your password will remain unchanged.</p>'+
+                subject: "Reset Password",
+                html: "<p>Hello,</p>" +
+                    "<p>You are receiving this because you have requested to reset the password for your account. If you did not request this, please ignore this email and your password will remain unchanged.</p>"+
 
                     '<p>Click <a href="https://writers-block.xyz/#/reset/' + token + '">here</a> to reset your password.</p>' 
                     // +
-                    // `<p>If link does not work copy and paste this into your browser:    http://localhost:3000/#/reset/${token}</p>`
+                    // `<p>If link does not work copy and paste this into your browser:    http://writers-block.xyz/#/reset/${token}</p>`
                     ,
     
                 onError: (e) => console.log(e),
                 onSuccess: (i) => console.log(i)
-            }
-            
-            )
+                
+            })
 
             res.status(200).send("Email sent");
         }
