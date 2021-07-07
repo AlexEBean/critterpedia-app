@@ -29,7 +29,8 @@ module.exports = {
             to: email,
             subject: "Welcome to Writers Block",
             html: `<p>Welcome to Writer's Block, ${username}!</p>` + 
-                "<p>You're ready to get and give advice, expand your writing skills, improve your novels, and interact with other authors. We're happy you joined. Enjoy.</p>"
+                "<p>You're ready to get and give advice, expand your writing skills, improve your novels, and interact with other authors. We're happy you joined.</p>" + 
+                "<p>Enjoy!</p>"
                 ,
 
             onError: (e) => console.log(e),
