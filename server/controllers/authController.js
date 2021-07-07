@@ -29,7 +29,7 @@ module.exports = {
             to: email,
             subject: "Welcome to Writers Block",
             html: `<p>Welcome to Writer's Block, ${username}!</p>` + 
-                "<p>You're ready to get and give advice, expand your writing skills, improve your novels, and interact with other authors. We're happy you joined.</p>" + 
+                "<p>You're ready to get and give advice, expand your writing skills, improve your novels, and interact with other authors. We're happy you've joined.</p>" + 
                 "<p>Enjoy!</p>"
                 ,
 
@@ -113,7 +113,6 @@ module.exports = {
                 subject: "Reset Password",
                 html: "<p>Hello,</p>" +
                     "<p>You are receiving this because you have requested to reset the password for your account. If you did not request this, please ignore this email and your password will remain unchanged.</p>"+
-
                     '<p>Click <a href="https://writers-block.xyz/#/reset/' + token + '">here</a> to reset your password.</p>' 
                     // +
                     // `<p>If link does not work copy and paste this into your browser:    http://writers-block.xyz/#/reset/${token}</p>`
