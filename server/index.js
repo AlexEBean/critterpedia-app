@@ -45,6 +45,7 @@ app.get('/auth/refresh', authCtrl.refresh)
 app.delete("/auth/delete", authCtrl.deleteUser)
 app.post("/forgotpassword", authCtrl.forgotPassword)
 app.put("/resetpassword/:passwordToken", authCtrl.resetPassword)
+app.post("/auth/view", authCtrl.addView)
 
 
 app.get("/api/posts", postCtrl.getAllPosts)

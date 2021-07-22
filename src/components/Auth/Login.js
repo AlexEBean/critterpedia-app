@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import axios from "axios"
 import {loginUser} from "../../redux/reducer"
 import {useDispatch } from "react-redux"
@@ -27,6 +27,20 @@ const Login = () => {
         catch(err) {
             console.log(err)
             alert("Invalid email or password")
+        }
+    }
+
+    useEffect (() => {
+        updateViews()
+    }, [])
+
+    const updateViews = async () => {
+        try{
+            const page = "Login"
+            await axios.post("/auth/view", {page})
+        } catch(err) {
+            console.log(err)
+            alert("Error in updating view count")
         }
     }
 

@@ -21,3 +21,15 @@ CREATE TABLE comments(
     post_id INT REFERENCES posts(post_id),
     comment VARCHAR(1000) NOT NULL
 );
+
+CREATE TABLE views(
+    view_count INT,
+    page VARCHAR(100)
+);
+
+INSERT INTO views (view_count, page)
+    VALUES (0, 'Register')
+    RETURNING *;
+INSERT INTO views (view_count, page)
+    VALUES (0, 'Login')
+    RETURNING *;

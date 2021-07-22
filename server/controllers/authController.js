@@ -138,5 +138,13 @@ module.exports = {
 
         const user = await db.auth.reset_password([passwordToken, hash])
         return res.status(200).send(user)
+    },
+
+    addView: async (req, res) => {
+        const db = req.app.get('db')
+        const {page} = req.body
+        await db.auth.add_view(page)
+        const [viewTotal] = await db.auth.get_view_count(page)
+        res.status(200).send(viewTotal)
     }
 }

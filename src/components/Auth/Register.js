@@ -53,6 +53,20 @@ const Register = () => {
         history.push("/")
     }
 
+    useEffect (() => {
+        updateViews()
+    }, [])
+
+    const updateViews = async () => {
+        try{
+            const page = "Register"
+            await axios.post("/auth/view", {page})
+        } catch(err) {
+            console.log(err)
+            alert("Error in updating view count")
+        }
+    }
+
     const inputsArr = [
         {name: "Username", type: "text", setState: setUsername},
         {name: "Email", type: "email", setState: setEmail},
