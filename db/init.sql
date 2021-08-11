@@ -12,13 +12,13 @@ ADD reset_password_token VARCHAR(2000) DEFAULT null;
 
 CREATE TABLE posts(
     post_id SERIAL PRIMARY KEY,
-    user_id INT REFERENCES users(user_id),
+    user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
     content VARCHAR(5000) NOT NULL
 );
 
 CREATE TABLE comments(
     comment_id SERIAL PRIMARY KEY,
-    post_id INT REFERENCES posts(post_id),
+    post_id INT REFERENCES posts(post_id) ON DELETE CASCADE,
     comment VARCHAR(1000) NOT NULL
 );
 
